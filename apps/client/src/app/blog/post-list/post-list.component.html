@@ -1,0 +1,123 @@
+<!-- loading display -->
+<div *ngIf="loading" id="loading" class="fade-in">
+    <div class="loader">Loading...</div>
+</div>
+
+<main>
+    <section class="section">
+        <div class="container">
+            <div class="form-group mx-4">
+                <label for="exampleInputIcon1"></label>
+                <div class="input-group mb-1">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><span class="fas fa-search"></span></span>
+                    </div>
+                    <input class="form-control" placeholder="Search" type="text" aria-label="Input with icon left"
+                        [(ngModel)]="searchText" (keydown.enter)="search()">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" (click)="clearSearchText()">
+                            <span class="fas fa-times"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="ml-0">{{totalPostsCount}} results</div>
+            </div>
+
+            <div class="mx-4 ">
+                <app-breadcrumb (resetPosts)="onResetPosts()" [categories]="breadcrumbCategories"
+                    [tags]="breadcrumbTags"></app-breadcrumb>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row flex-xl-nowrap d-flex justify-content-center">
+
+                <!-- ブログ記事一覧 -->
+                <main class="col-xl-10 bd-content row">
+                    <!-- ブログ記事の表示 -->
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6 mb-4 pt-3" *ngFor="let post of posts">
+                                <div class="card bg-primary border-light shadow-soft h-100">
+                                    <div class="row no-gutters">
+                                        <div class="col-3 align-self-center">
+                                            <a [routerLink]="post.id">
+                                                <div
+                                                    class="card bg-primary shadow-soft border-light organic-radius mx-2 my-2 p-0">
+                                                    <img src="{{ post.thumbnail || defaultThumbnail}}" alt="..."
+                                                        class="organic-radius img-fluid">
+                                                </div>
+                                            </a>
+                                            <!-- <div class="card p-1 mt-2 mx-2">
+                                        <a [routerLink]="[post.id]" class="btn btn-primary btn-sm">Detail</a>
+                                    </div> -->
+                                        </div>
+                                        <div class="col-9">
+                                            <div class="card-body px-3 py-2">
+                                                <div class="media">
+                                                    <span class="medium">
+                                                        <div class="post-group mr-1">
+                                                            <span class="fa-solid fa-tag align-self-center"></span>
+                                                            <span class="px-1" *ngFor="let tag of post.tags">
+                                                                <a class="underline-link" [routerLink]="'/blog/posts/'"
+                                                                    [queryParams]="{tag: tag,  page: 1}">
+                                                                    {{ tag }}
+                                                                </a>
+                                                            </span>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <div class="d-flex align-items-center justify-content-end">
+                                                    <span class="small text-right mr-1">
+                                                        <span class="far fa-calendar-alt mr-2"></span>{{post.date}}
+                                                    </span>
+                                                </div>
+
+                                                <a [routerLink]="post.id">
+                                                    <h6 class="card-title my-2 font-weight-bold">{{ post.title }} </h6>
+                                                </a>
+                                                <div *ngIf="isGreaterThanXS">
+                                                    <p class="card-text">{{post.article}}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- ページネーションの表示 -->
+                        <app-pagination [totalPosts]="totalPostsCount" [postsPerPage]="postsPerPage"
+                            [currentPage]="currentPage" (changePage)="onChangePage($event)">
+                        </app-pagination>
+
+                    </div>
+                </main>
+
+                <!-- サイドバー -->
+                <div class="col-xl-2 bd-sidebar">
+                    <app-category-list [categories]="sidebarCategories"></app-category-list>
+                    <div class="my-4"></div>
+                    <app-tag-list [tags]="sidebarTags"></app-tag-list>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<!-- カードタイプの記事一覧　参考にコメントアウト -->
+<!-- <div class="col-12 col-md-6 col-lg-4 mb-5" *ngFor="let post of pagedPosts">
+    <div class="card bg-primary border-light shadow-soft">
+        <img src="{{ post.thumbnail || defaultImagePath}}" class="card-img-top rounded-top" alt="...">
+        <div class="card-body">
+            <div class="media d-flex align-items-center justify-content-between">
+                <div class="post-group">{{ post.categories.join()}}</div>
+                <div class="d-flex align-items-center"><span class="small"><span
+                            class="far fa-calendar-alt mr-2"></span>{{post.date}}</span></div>
+            </div>
+            <h5 class="h5 card-title mt-3">{{ post.title }} </h5>
+            <p class="card-text">{{post.article}}</p>
+            <a [routerLink]="[post.id]" class="btn btn-primary btn-sm">Learn More</a>
+        </div>
+    </div>
+</div> -->

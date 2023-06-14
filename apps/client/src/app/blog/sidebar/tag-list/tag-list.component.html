@@ -1,0 +1,11 @@
+<ul class="list-group font-weight-bold">Tags
+    <li class="list-group-item list-style-none border-0" *ngFor="let tag of tags">
+        <a [routerLink]="['/blog/posts']" [queryParams]="{tag: tag.name}">
+            <div class="btn btn-pill px-2 py-1 mx-1 my-1">
+                <span class="fa-solid fa-tag mr-1"></span>
+                {{tag.name}}
+                <span class="badge badge-pill badge-success">{{tag.count}}</span>
+            </div>
+        </a>
+    </li>
+</ul>

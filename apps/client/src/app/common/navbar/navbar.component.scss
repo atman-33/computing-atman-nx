@@ -1,0 +1,31 @@
+.navbar-wrapper {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  margin-top: 0;
+}
+
+.navbar-btn.btn {
+  background-color: gray;
+  color: white;
+  box-shadow: 0px 0px 0px #b8b9be, 0px 0px 0px #ffffff;
+  white-space: nowrap;
+}
+
+.nav-item {
+  white-space: nowrap;
+}
+
+@media (max-width: 992px) {
+  .navbar-btn.btn {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    min-width: 10rem;
+  }
+}
+
+.sign-up-btn.navbar-btn.btn {
+  background-color: #A91E2C;
+  color: white;
+}

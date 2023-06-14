@@ -1,0 +1,129 @@
+<div class="navbar-wrapper">
+    <nav id="navbar-main" aria-label="Primary navigation"
+        class="navbar navbar-main navbar-expand-lg navbar-theme-primary bg-light shadow py-1">
+        <div class="container position-relative">
+
+            <div>
+                <a class="navbar-brand py-2 px-1 rounded border-light font-weight-bold" [routerLink]="['/']"
+                    (click)="closeNavbarDialog()">
+                    Computing Atman
+                </a>
+                <ng-container *ngIf="auth.isAuthenticated()">
+                    <span>
+                        <span class="text-success fa-solid fa-user mx-1"></span>
+                        <span class="text-success font-weight-bold">{{auth.getAuthenticatedUsername()}}</span>
+                    </span>
+                </ng-container>
+            </div>
+
+            <div class="navbar-collapse collapse" [class.show]="isNavbarDialogOpen">
+
+                <!-- When display is small -->
+                <div class="navbar-collapse-header">
+                    <div class="row">
+                        <div class="col-6 collapse-brand">
+                        </div>
+                        <div class="col-6 collapse-close" (click)="closeNavbarDialog()">
+                            <a class="fas fa-times" data-toggle="collapse" title="close"
+                                aria-label="Toggle navigation"></a>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="navbar-nav navbar-nav-hover align-items-lg-center ml-auto">
+
+                    <li class="nav-item mt-2 mb-2">
+                        <a class="text-secondary ml-1 mr-3" [routerLink]="['/blog']" (click)="closeNavbarDialog()">
+                            <span>My Blog
+                                <span class="fas fa-blog ml-2">
+                                </span>
+                            </span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item dropdown" ngbDropdown>
+                        <div href="#" class="nav-link" data-toggle="dropdown" ngbDropdownToggle>
+                            <span class="nav-link-inner-text text-secondary">Template Sites</span>
+                            <span class="fas fa-angle-down nav-link-arrow ml-2 text-secondary"></span>
+                        </div>
+                        <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li><a class="dropdown-item my-1" href="https://atman-33.github.io/template-blog-hexo/"
+                                    target="_blank" (click)="closeNavbarDialog()">Hexo Material</a></li>
+                            <li><a class="dropdown-item my-1" [routerLink]="['/user-management']"
+                                    (click)="closeNavbarDialog()">User table management</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown" ngbDropdown>
+                        <div href="#" class="nav-link" data-toggle="dropdown" ngbDropdownToggle>
+                            <span class="nav-link-inner-text text-secondary">Games</span>
+                            <span class="fas fa-angle-down nav-link-arrow ml-2 text-secondary"></span>
+                        </div>
+                        <ul class="dropdown-menu" ngbDropdownMenu>
+                            <li><a class="dropdown-item my-1" href="https://atman-33.github.io/phaser3-webpack-starter-ts/"
+                                    target="_blank">
+                                    Infinite Runner</a></li>
+                        </ul>
+                    </li>
+
+                    <hr color="#808080">
+
+                    <li class="nav-item">
+                        <a class="nav-link pt-0 pb-0" rel="tooltip" title="Follow us on Twitter" data-placement="bottom"
+                            href="https://twitter.com/atman_33" target="_blank" (click)="closeNavbarDialog()">
+                            <i class="fa-brands fa-twitter"></i>
+                            <p class="d-lg-none">Twitter</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pt-0 pb-0" rel="tooltip" title="Star on GitHub" data-placement="bottom"
+                            href="https://github.com/atman-33" target="_blank" (click)="closeNavbarDialog()">
+                            <i class="fa-brands fa-github"></i>
+                            <p class="d-lg-none">GitHub</p>
+                        </a>
+                    </li>
+
+                    <!-- サインイン前 -->
+                    <ng-container *ngIf="!auth.isAuthenticated()">
+                        <li class="nav-item d-flex justify-content-center">
+                            <a routerLink="/signin" (click)="closeNavbarDialog()">
+                                <div class="navbar-btn btn btn-pill">
+                                    <span class="fa-solid fa-user mr-1"></span>Sign in
+                                </div>
+                            </a>
+                        </li>
+
+                        <li class="nav-item d-flex justify-content-center">
+                            <a routerLink="/signup" (click)="closeNavbarDialog()">
+                                <div class="sign-up-btn navbar-btn btn btn-pill">
+                                    <span class="fa fa-sign-in mr-1"></span>Sign up
+                                </div>
+                            </a>
+                        </li>
+                    </ng-container>
+
+                    <!-- サインイン後 -->
+                    <ng-container *ngIf="auth.isAuthenticated()">
+                        <li class="nav-item d-flex justify-content-center">
+                            <a (click)="signout()">
+                                <div class="navbar-btn btn btn-pill">
+                                    <span class="fa-solid fa-user mr-1"></span>Sign out
+                                </div>
+                            </a>
+                        </li>
+                    </ng-container>
+
+                </ul>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <button class="navbar-toggler ml-2" type="button" data-toggle="collapse" data-target="#navbar_global"
+                    aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation"
+                    (click)="toggleNavbarDialog()">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+        </div>
+    </nav>
+</div>

@@ -16,6 +16,7 @@
     "@nestjs/common": "^9.1.1",
     "@nestjs/core": "^9.1.1",
     "@nestjs/platform-express": "^9.1.1",
+    "@ng-bootstrap/ng-bootstrap": "^15.0.1",
     "@nrwl/angular": "^16.3.2",
     "axios": "^1.0.0",
     "reflect-metadata": "^0.1.13",
