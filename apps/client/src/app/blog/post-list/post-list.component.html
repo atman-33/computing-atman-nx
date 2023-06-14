@@ -24,8 +24,8 @@
             </div>
 
             <div class="mx-4 ">
-                <app-breadcrumb (resetPosts)="onResetPosts()" [categories]="breadcrumbCategories"
-                    [tags]="breadcrumbTags"></app-breadcrumb>
+                <can-breadcrumb (resetPosts)="onResetPosts()" [categories]="breadcrumbCategories"
+                    [tags]="breadcrumbTags"></can-breadcrumb>
             </div>
         </div>
 
@@ -87,18 +87,18 @@
                         </div>
 
                         <!-- ページネーションの表示 -->
-                        <app-pagination [totalPosts]="totalPostsCount" [postsPerPage]="postsPerPage"
+                        <can-pagination [totalPosts]="totalPostsCount" [postsPerPage]="postsPerPage"
                             [currentPage]="currentPage" (changePage)="onChangePage($event)">
-                        </app-pagination>
+                        </can-pagination>
 
                     </div>
                 </main>
 
                 <!-- サイドバー -->
                 <div class="col-xl-2 bd-sidebar">
-                    <app-category-list [categories]="sidebarCategories"></app-category-list>
+                    <can-category-list [categories]="sidebarCategories"></can-category-list>
                     <div class="my-4"></div>
-                    <app-tag-list [tags]="sidebarTags"></app-tag-list>
+                    <can-tag-list [tags]="sidebarTags"></can-tag-list>
                 </div>
             </div>
         </div>

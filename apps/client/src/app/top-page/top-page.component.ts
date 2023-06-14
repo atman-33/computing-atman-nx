@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-top-page',
+  selector: 'can-top-page',
   templateUrl: './top-page.component.html',
   styleUrls: ['./top-page.component.scss'],
 })

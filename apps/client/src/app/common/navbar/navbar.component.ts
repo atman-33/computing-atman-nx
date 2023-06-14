@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../auth/shared/auth.service';
 
 @Component({
-  selector: 'app-navbar',
+  selector: 'can-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss'],
 })

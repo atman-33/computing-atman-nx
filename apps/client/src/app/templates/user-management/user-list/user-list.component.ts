@@ -1,12 +1,12 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit, ViewContainerRef } from '@angular/core';
-import { User } from 'libs/src/shared/models/user.model';
+import { User } from '@libs/shared/domain';
 import { DialogService } from '../../../common/confirmation-dialog/dialog.service';
 import * as httpErrorHelper from '../../../shared/helpers/http-error-helper';
 import { UserService } from '../shared/user.service';
 
 @Component({
-  selector: 'app-user-list',
+  selector: 'can-user-list',
   templateUrl: './user-list.component.html',
   styleUrls: ['./user-list.component.scss'],
 })

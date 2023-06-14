@@ -8,7 +8,7 @@ import { PrismService } from '../../shared/services/prism.service';
 import { PostService } from '../shared/post.service';
 
 @Component({
-  selector: 'app-post-detail',
+  selector: 'can-post-detail',
   templateUrl: './post-detail.component.html',
   styleUrls: ['./post-detail.component.scss']
 })

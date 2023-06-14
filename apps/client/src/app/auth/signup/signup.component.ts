@@ -7,7 +7,7 @@ import * as httpErrorHelper from '../../shared/helpers/http-error-helper';
 import { AuthService } from '../shared/auth.service';
 
 @Component({
-  selector: 'app-signup',
+  selector: 'can-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
