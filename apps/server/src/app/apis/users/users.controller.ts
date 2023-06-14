@@ -1,5 +1,5 @@
+import { UserRole } from '@libs/shared/domain';
 import { Body, Controller, Delete, Get, Param, Patch, UseGuards } from '@nestjs/common';
-import { UserRole } from 'libs/src/shared/enums/user-role.enum';
 import { Role } from '../auth/decorators/role.decorator';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { RolesGuard } from '../auth/guards/roles.guard';

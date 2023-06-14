@@ -1,6 +1,6 @@
+import { Category, Post, PostResponse, Tag } from '@libs/shared/domain';
 import { Controller, Get, NotFoundException, Param, Query, Res } from '@nestjs/common';
 import { Response } from 'express';
-import { Category, Post, PostResponse, Tag } from 'libs/src/shared/models';
 import { PostsService } from './posts.service';
 
 @Controller('posts')

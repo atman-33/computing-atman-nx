@@ -1,4 +1,4 @@
-import * as MarkdownIt from 'markdown-it';
+import MarkdownIt = require('markdown-it');
 
 /**
  * mdファイル内の画像に文字列を追加

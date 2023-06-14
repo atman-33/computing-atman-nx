@@ -1,15 +1,14 @@
+import { Category, Constants, Post, PostResponse, Tag, Utils } from '@libs/shared/domain';
 import { Injectable } from '@nestjs/common';
 import { Response } from 'express';
 import { readFile, readdir } from 'fs';
-import * as constants from 'libs/src/shared/constants';
-import * as helpers from 'libs/src/shared/helpers';
-import { Category, Post, PostResponse, Tag } from 'libs/src/shared/models';
-import * as utils from 'libs/src/shared/utils';
 import { join } from 'path';
 import { promisify } from 'util';
+import * as markdownHelper from '../../shared/markdown-helper';
 
 @Injectable()
 export class PostsService {
+  private readonly distPostsPath = 'dist/apps/server/assets/posts';
 
   /**
    * ページに対応した記事データを取得
@@ -36,7 +35,7 @@ export class PostsService {
     }
 
     const allPosts = await this.findAllPosts();
-    const posts = this.findPagePosts(allPosts, page, constants.default.POSTS_PER_PAGE);
+    const posts = this.findPagePosts(allPosts, page, Constants.default.POSTS_PER_PAGE);
     return { posts: posts, totalCount: allPosts.length };
   }
 
@@ -48,7 +47,7 @@ export class PostsService {
   async findPostById(id: string): Promise<Post> {
     // console.log(id);
 
-    const filePath = join(process.cwd(), 'dist/server/assets/posts', id, 'index.md');
+    const filePath = join(process.cwd(), this.distPostsPath, id, 'index.md');
     try {
       const content = promisify(readFile)(filePath, { encoding: 'utf-8' });
       return this.parsePostContent(id, await content);
@@ -85,10 +84,10 @@ export class PostsService {
     }
 
     // Shuffle the related posts array
-    const shuffledPosts = utils.shuffleArray(relatedPosts);
+    const shuffledPosts = Utils.shuffleArray(relatedPosts);
 
     // Return the first 5 posts (or fewer if there are less than 5)
-    return shuffledPosts.slice(0, constants.default.RELATED_ARTICLES_COUNT);
+    return shuffledPosts.slice(0, Constants.default.RELATED_ARTICLES_COUNT);
   }
 
   /**
@@ -100,7 +99,7 @@ export class PostsService {
    */
   getPostImageFile(id: string, file: string, res: Response) {
 
-    const imageFilePath = join(process.cwd(), 'dist/server/assets/posts', id, file);
+    const imageFilePath = join(process.cwd(), this.distPostsPath, id, file);
     return res.sendFile(imageFilePath);
   }
 
@@ -109,7 +108,7 @@ export class PostsService {
    * @returns 
    */
   async findPostIds(): Promise<string[]> {
-    const folderPath = join(process.cwd(), 'dist/server/assets/posts');
+    const folderPath = join(process.cwd(), this.distPostsPath);
     try {
       const dirents = await promisify(readdir)(
         folderPath, {
@@ -139,7 +138,7 @@ export class PostsService {
       allPosts = allPosts.filter(post => post.categories.includes(category));
     }
 
-    const posts = this.findPagePosts(allPosts, page, constants.default.POSTS_PER_PAGE);
+    const posts = this.findPagePosts(allPosts, page, Constants.default.POSTS_PER_PAGE);
 
     return { posts: posts, totalCount: allPosts.length };
   }
@@ -157,7 +156,7 @@ export class PostsService {
       allPosts = allPosts.filter(post => post.tags.includes(tag));
     }
 
-    const posts = this.findPagePosts(allPosts, page, constants.default.POSTS_PER_PAGE);
+    const posts = this.findPagePosts(allPosts, page, Constants.default.POSTS_PER_PAGE);
 
     return { posts: posts, totalCount: allPosts.length };
   }
@@ -186,7 +185,7 @@ export class PostsService {
     }
 
     // console.log(`Posts count: ${allPosts.length}`);
-    const posts = this.findPagePosts(allPosts, page, constants.default.POSTS_PER_PAGE);
+    const posts = this.findPagePosts(allPosts, page, Constants.default.POSTS_PER_PAGE);
     return { posts: posts, totalCount: allPosts.length };
   }
 
@@ -246,7 +245,7 @@ export class PostsService {
       allPosts.push(await this.findPostById(id));
     }
 
-    allPosts = utils.sortByDate(allPosts, 'date', 'desc');  // 新規投稿順にソート
+    allPosts = Utils.sortByDate(allPosts, 'date', 'desc');  // 新規投稿順にソート
 
     return allPosts;
   }
@@ -285,12 +284,12 @@ export class PostsService {
 
     let post: Post = {
       id: id,
-      title: helpers.getMetadataValue(content, 'title:'),
-      date: helpers.getMetadataValue(content, 'date:'),
-      thumbnail: helpers.getMetadataValue(content, 'thumbnail:'),
-      tags: helpers.getMetadataArray(content, 'tags:'),
-      categories: helpers.getMetadataArray(content, 'categories:'),
-      article: helpers.getMdContent(content),
+      title: markdownHelper.getMetadataValue(content, 'title:'),
+      date: markdownHelper.getMetadataValue(content, 'date:'),
+      thumbnail: markdownHelper.getMetadataValue(content, 'thumbnail:'),
+      tags: markdownHelper.getMetadataArray(content, 'tags:'),
+      categories: markdownHelper.getMetadataArray(content, 'categories:'),
+      article: markdownHelper.getMdContent(content),
     };
 
     post = this.addPrefixTothumbnail(post);
@@ -307,7 +306,7 @@ export class PostsService {
   }
 
   private addPrefixToImageSource(post: Post): Post {
-    post.article = helpers.addMdPrefixToImageSource(post.article, './api/posts/img/' + post.id + '/');
+    post.article = markdownHelper.addMdPrefixToImageSource(post.article, './api/posts/img/' + post.id + '/');
     return post;
   }
 }
