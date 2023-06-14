@@ -15,17 +15,52 @@
         "main": "apps/client/src/main.ts",
         "polyfills": ["zone.js"],
         "tsConfig": "apps/client/tsconfig.app.json",
-        "assets": ["apps/client/src/favicon.ico", "apps/client/src/assets"],
-        "styles": ["apps/client/src/styles.scss"],
-        "scripts": []
+        "assets": [
+          "apps/client/src/favicon.ico", 
+          "apps/client/src/assets",
+          "apps/client/src/sitemap.xml",
+          "apps/client/src/robots.txt"
+        ],
+        "styles": [
+          "node_modules/bootstrap/dist/css/bootstrap.min.css",
+          "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+          "apps/client/src/assets/scss/neumorphism.scss",
+          "node_modules/prismjs/themes/prism.css",
+          "node_modules/prismjs/plugins/toolbar/prism-toolbar.min.css",
+          "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css",
+          "apps/client/src/assets/scss/blog-post.scss",
+          "apps/client/src/styles.scss"
+        ],
+        "scripts": [
+          "node_modules/jquery/dist/jquery.min.js",
+          "node_modules/popper.js/dist/umd/popper.min.js",
+          "node_modules/bootstrap/dist/js/bootstrap.min.js",
+          "node_modules/headroom.js/dist/headroom.js",
+          "node_modules/jquery-ui/dist/jquery-ui.min.js",
+          "node_modules/jquery.counterup/jquery.counterup.min.js",
+          "node_modules/jquery-countdown/dist/jquery.countdown.min.js",
+          "node_modules/jarallax/dist/jarallax.min.js",
+          "node_modules/smooth-scroll/dist/smooth-scroll.min.js",
+          "node_modules/@fortawesome/fontawesome-free/js/all.min.js",
+          "node_modules/prismjs/prism.js",
+          "node_modules/prismjs/plugins/toolbar/prism-toolbar.min.js",
+          "node_modules/prismjs/plugins/show-language/prism-show-language.min.js",
+          "node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js",
+          "node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.js",
+          "apps/client/src/assets/js/neumorphism.js"
+        ],
+        "allowedCommonJsDependencies": [
+          "prismjs",
+          "prismjs/plugins/copy-to-clipboard"
+        ]
       },
       "configurations": {
         "production": {
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "4mb",
+              "maximumError": "5mb"
             },
             {
               "type": "anyComponentStyle",

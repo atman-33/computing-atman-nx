@@ -2,7 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserCredentials } from 'libs/src/shared/models/user-credentials.model';
+import { UserCredentials } from '@libs/shared/domain';
 import * as httpErrorHelper from '../../shared/helpers/http-error-helper';
 import { AuthService } from '../shared/auth.service';
 

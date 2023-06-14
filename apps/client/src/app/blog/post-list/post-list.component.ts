@@ -2,11 +2,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
 import { ActivatedRoute, Router } from '@angular/router';
-import * as constants from 'libs/src/shared/constants';
-import { Category, Post, Tag } from 'libs/src/shared/models';
-import * as utils from 'libs/src/shared/utils/index';
+import { Category, Constants, Post, Tag, Utils } from '@libs/shared/domain';
 import { map } from 'rxjs';
-import Constants from '../../shared/constants';
+import ClientConstants from '../../shared/constants';
 import { PostService } from '../shared/post.service';
 
 @Component({
@@ -16,12 +14,12 @@ import { PostService } from '../shared/post.service';
 })
 export class PostListComponent implements OnInit {
 
-  public readonly defaultThumbnail = Constants.DEFAULT_BLOG_THUMBNAIL_PATH;
-  public readonly articleLeadMaxLength = Constants.ARTICLE_LEAD_MAX_LENGTH;
+  public readonly defaultThumbnail = ClientConstants.DEFAULT_BLOG_THUMBNAIL_PATH;
+  public readonly articleLeadMaxLength = ClientConstants.ARTICLE_LEAD_MAX_LENGTH;
 
   public posts: Post[] = [];
   public totalPostsCount!: number;
-  public postsPerPage = constants.default.POSTS_PER_PAGE;
+  public postsPerPage = Constants.default.POSTS_PER_PAGE;
 
   public currentPage = 1;
   public currentCategory!: string;
@@ -103,7 +101,7 @@ export class PostListComponent implements OnInit {
     // サイドバーのカテゴリー一覧を設定
     this.postService.getCategoryList().subscribe({
       next: (data) => {
-        this.sidebarCategories = utils.sortByNumber(data, 'count', 'desc');
+        this.sidebarCategories = Utils.sortByNumber(data, 'count', 'desc');
       },
       error: (err: HttpErrorResponse) => console.error(err)
     });
@@ -111,7 +109,7 @@ export class PostListComponent implements OnInit {
     // サイドバーのタグ一覧を設定
     this.postService.getTagList().subscribe({
       next: (data) => {
-        this.sidebarTags = utils.sortByNumber(data, 'count', 'desc');
+        this.sidebarTags = Utils.sortByNumber(data, 'count', 'desc');
       },
       error: (err: HttpErrorResponse) => console.error(err)
     });
@@ -135,7 +133,7 @@ export class PostListComponent implements OnInit {
         this.posts = this.posts.map(post => {
           return {
             ...post,
-            article: utils.extractLead(post.article, this.articleLeadMaxLength)
+            article: Utils.extractLead(post.article, this.articleLeadMaxLength)
           };
         });
         // console.log('totalPostsCount: ' + this.totalPostsCount);

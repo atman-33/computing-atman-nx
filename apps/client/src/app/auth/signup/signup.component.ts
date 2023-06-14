@@ -2,8 +2,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserRole } from 'libs/src/shared/enums/user-role.enum';
-import { User } from 'libs/src/shared/models/user.model';
+import { User, UserRole } from '@libs/shared/domain';
 import * as httpErrorHelper from '../../shared/helpers/http-error-helper';
 import { AuthService } from '../shared/auth.service';
 

@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 // eslint-disable-next-line @nx/enforce-module-boundaries
-import { Category, Post, PostResponse, Tag } from 'libs/src/shared/models';
+import { Category, Post, PostResponse, Tag } from '@libs/shared/domain';
 
 @Injectable()   // <= Angularでserviceを利用する際に必要
 export class PostService {

@@ -2,9 +2,8 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
-import { Post } from 'libs/src/shared/models/post.model';
-import * as utils from 'libs/src/shared/utils/index';
-import Constants from '../../shared/constants';
+import { Post, Utils } from '@libs/shared/domain';
+import ClientConstants from '../../shared/constants';
 import { PrismService } from '../../shared/services/prism.service';
 import { PostService } from '../shared/post.service';
 
@@ -15,8 +14,8 @@ import { PostService } from '../shared/post.service';
 })
 export class PostDetailComponent implements OnInit, AfterViewChecked {
 
-  public readonly defaultThumbnail = Constants.DEFAULT_BLOG_THUMBNAIL_PATH;
-  public readonly articleLeadMaxLength = Constants.ARTICLE_LEAD_MAX_LENGTH;
+  public readonly defaultThumbnail = ClientConstants.DEFAULT_BLOG_THUMBNAIL_PATH;
+  public readonly articleLeadMaxLength = ClientConstants.ARTICLE_LEAD_MAX_LENGTH;
 
   public post!: Post;
   public articleHtml!: string;
@@ -59,7 +58,7 @@ export class PostDetailComponent implements OnInit, AfterViewChecked {
           this.tags = data.tags;
           this.categories = data.categories;
 
-          this.articleHtml = utils.addClassToHtml(data.article, 'line-numbers', 'pre');
+          this.articleHtml = Utils.addClassToHtml(data.article, 'line-numbers', 'pre');
 
           this.highlighted = false;
         },
@@ -74,7 +73,7 @@ export class PostDetailComponent implements OnInit, AfterViewChecked {
           this.relatedPosts = this.relatedPosts.map(post => {
             return {
               ...post,
-              article: utils.extractLead(post.article, this.articleLeadMaxLength)
+              article: Utils.extractLead(post.article, this.articleLeadMaxLength)
             };
           });
         },
