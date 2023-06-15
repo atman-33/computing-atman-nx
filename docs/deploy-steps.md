@@ -4,6 +4,11 @@
 ```
 nx run-many --target=build --all --prod
 ```
+or
+```
+nx build client --prod
+nx build server --prod
+```
 ↓
 ```
 npm run build
