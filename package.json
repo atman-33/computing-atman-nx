@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx run-many --target=build --all --prod",
+    "build": "nx build client --prod && nx build server --prod",
     "start": "node dist/apps/server/main.js"
   },
   "private": true,
