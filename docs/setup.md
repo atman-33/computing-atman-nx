@@ -1,3 +1,8 @@
+## install nx
+```
+npm install -g nx
+```
+
 ## create nx workspace NestJS app
 ```
 npx create-nx-workspace@latest --preset nest

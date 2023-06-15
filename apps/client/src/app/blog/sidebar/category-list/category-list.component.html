@@ -1,0 +1,10 @@
+<ul class="list-group font-weight-bold">Categories
+    <li class="list-group-item list-style-none border-0" *ngFor="let category of categories">
+        <a [routerLink]="['/blog/posts']" [queryParams]="{category: category.name}">
+            <div class="btn btn-pill px-2 py-1 mx-1 my-1">
+                {{category.name}}
+                <span class="badge badge-pill badge-success">{{category.count}}</span>
+            </div>
+        </a>
+    </li>
+</ul>

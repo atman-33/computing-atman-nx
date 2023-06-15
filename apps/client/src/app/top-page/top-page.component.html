@@ -1,0 +1,96 @@
+<main>
+    <section class="section mt-2">
+        <div class="container">
+            <div class="row align-items-center justify-content-around">
+                <div class="col-md-6 col-xl-6 mb-5">
+                    <div class="card bg-primary shadow-soft border-light organic-radius p-2">
+                        <img class="organic-radius img-fluid" src="../../assets/img/keyboard.jpg" alt="keyboard">
+                    </div>
+                </div>
+                <div class="col-md-6 col-xl-5 text-center text-md-left">
+                    <h2 class="h1 mb-4">Welcome to Computing Atman Site</h2>
+                    <p class="lead">This website is an information site on system development and programming related to
+                        IT. We provide information on software that handles data, such as DB and BI tools, as well as
+                        coding-related topics such as C#, VBA, Python, Javascript, and Typescript.</p>
+                    <p class="lead">If you have any questions or requests, please contact us via Twitter.</p>
+
+                    <a class="nav-link d-flex align-items-center justify-content-center" rel="tooltip"
+                        title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/atman_33"
+                        target="_blank">
+                        <p class="script-font mb-0 ml-0">Atman</p>
+                        <i class="fa-brands fa-twitter fa-2x mb-0 ml-2"></i>
+                        <p class="d-lg-none mb-0 ml-1">Twitter</p>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row mt-5 mb-5">
+
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="icon-box mb-4">
+                        <a [routerLink]="['/blog']">
+                            <div class="icon icon-shape shadow-soft border-light rounded-circle mb-4"><span
+                                    class="fas fa-blog">
+                                </span>
+                            </div>
+                        </a>
+                        <h2 class="h5 icon-box-title">My Blog</h2>
+                        <span>
+                            IT-related information blog.<br>
+                            Please take a look if you're interested.
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="icon-box">
+                        <a class="icon icon-shape shadow-soft border-light rounded-circle mb-4"
+                            data-bs-toggle="collapse" data-bs-target="#collapseSites" aria-expanded="true">
+                            <span class="fas fa-pager"></span>
+                        </a>
+                        <h2 class="h5 icon-box-title">Template Sites</h2>
+                        <span>
+                            Various template sites.<br>
+                            Please feel free to use it as a reference if you like.
+                        </span>
+                        <div id="collapseSites" class="accordion-collapse collapse">
+                            <ul class="footer-links list-unstyled mt-4">
+                                <li class="text-secondary font-weight-bold">
+                                    <a href="https://atman-33.github.io/template-blog-hexo/" target="_blank">Hexo
+                                        Material</a>
+                                </li>
+                                <li class="text-secondary font-weight-bold">
+                                    <a [routerLink]="['/user-management']">User table management</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-lg-4 text-center">
+                    <div class="icon-box">
+                        <a class="icon icon-shape shadow-soft border-light rounded-circle mb-4"
+                            data-bs-toggle="collapse" data-bs-target="#collapseGames" aria-expanded="true">
+                            <span class="fas fa-gamepad"></span>
+                        </a>
+                        <h2 class="h5 icon-box-title">Games</h2>
+                        <span>
+                            Game made with Javascript etc.<br>
+                            Please enjoy it if you like.
+                        </span>
+                        <div id="collapseGames" class="accordion-collapse collapse">
+                            <ul class="footer-links list-unstyled mt-4">
+                                <li class="text-secondary font-weight-bold">
+                                    <a href="https://atman-33.github.io/phaser3-webpack-starter-ts/" target="_blank">
+                                        Infinite Runner</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+</main>

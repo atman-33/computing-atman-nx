@@ -1,0 +1,34 @@
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb breadcrumb-gray breadcrumb-transparent mb-0">
+        <li class="breadcrumb-item align-self-center">
+            <a class="underline-link" [routerLink]="['/blog']" (click)="resetPosts.emit()">Blog
+                Home</a>
+        </li>
+
+        <li class="d-flex justify-content-left" *ngIf="categories.length > 0">
+            <span class="fas fa-angle-double-right align-self-center mx-2"></span>
+            <div class="breadcrumb-item">
+                <a class="underline-link" *ngFor="let category of categories" [routerLink]="['/blog/posts']"
+                    [queryParams]="{category: category}">
+                    {{ category }}
+                </a>
+            </div>
+        </li>
+
+        <li class="d-flex justify-content-left" *ngIf="tags.length > 0">
+            <span class="fas fa-angle-double-right align-self-center mx-2"></span>
+            <div class="breadcrumb-item align-self-center">
+                <span class="fa-solid fa-tag pr-0"></span>
+                <a class="pl-1 underline-link" *ngFor="let tag of tags" [routerLink]="['/blog/posts']"
+                    [queryParams]="{tag: tag}">
+                    {{ tag }}
+                </a>
+            </div>
+        </li>
+
+        <li class="d-flex justify-content-left" *ngIf="postTitle !== ''">
+            <span class="fas fa-angle-double-right align-self-center mx-2"></span>
+            <div class="breadcrumb-item align-self-center">{{postTitle}}</div>
+        </li>
+    </ol>
+</nav>

@@ -1,0 +1,25 @@
+<main>
+  <section class="section d-flex bg-primary align-items-center mt-2">
+    <div class="container">
+      <h2>User Maintenance</h2>
+      <div *ngIf="errors && errors.length>0" class="alert alert-danger alert-dismissible shadow-soft fade show mt-4">
+        <p *ngFor="let error of errors" class="my-0">
+          <span class="alert-inner--icon"><span class="fas fa-fire"></span></span>
+          <span class="alert-inner--text"><strong>{{error}}</strong></span>
+        </p>
+      </div>
+      <table>
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{ user.username }}</td>
+          <td>{{ user.role }}</td>
+          <td><button class="btn btn-primary text-danger font-weight-bold" (click)="openConfirmationDialog(user)">Delete</button></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</main>

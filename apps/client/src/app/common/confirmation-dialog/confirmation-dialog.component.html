@@ -1,0 +1,11 @@
+<div class="overlay">
+    <div class="window alert alert-secondary mb-4 mb-lg-5" role="alert">
+        <button class="close" (click)="confirm(false)">Close</button>
+        <span class="alert-inner--icon icon-lg"><span class="fas fa-exclamation-circle"></span></span> <span
+            class="alert-heading">Warning!</span>
+        <p class="message">{{ message }}</p>
+        <hr>
+        <button class="btn btn-primary mx-2 text-success font-weight-bold" type="button" (click)="confirm(true)">Yes</button>
+        <button class="btn btn-primary mx-2 text-danger font-weight-bold" type="button" (click)="confirm(false)">No</button>
+    </div>
+</div>
