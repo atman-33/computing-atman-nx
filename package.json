@@ -2,6 +2,9 @@
   "name": "@computing-atman-nx/source",
   "version": "0.0.0",
   "license": "MIT",
+  "engines": {
+    "node": "18.x"
+  },
   "scripts": {
     "build": "nx build client --prod && nx build server --prod",
     "start": "node dist/apps/server/main.js"
