@@ -51,7 +51,7 @@ export class PostDetailComponent implements OnInit, AfterViewChecked {
           this.title = data.title;
           this.titleService.setTitle(`${this.title} | Computing Atman`);
           
-          console.log(this.title);
+          // console.log(this.title);
 
           this.date = data.date;
           this.thumbnail = data.thumbnail;
@@ -83,9 +83,9 @@ export class PostDetailComponent implements OnInit, AfterViewChecked {
   }
 
   ngAfterViewChecked() {
-    console.log('ngAfterViewChecked!');
+    // console.log('ngAfterViewChecked!');
     if (!this.highlighted && this.articleHtml) {
-      console.log('ハイライト!');
+      // console.log('ハイライト!');
 
       this.highlightAll();
     }
