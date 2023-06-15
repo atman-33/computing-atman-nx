@@ -2,7 +2,10 @@
   "name": "@computing-atman-nx/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx run-many --target=build --all --prod",
+    "start": "node dist/apps/server/main.js"
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "~16.0.0",

@@ -10,7 +10,6 @@ import { EnvService } from './config/env.service';
 
 @Module({
   imports: [
-    // TypeOrmModule.forRoot(dataSourceOptions),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
       exclude: ['/api*'],
