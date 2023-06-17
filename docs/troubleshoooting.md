@@ -3,8 +3,8 @@
 ### 原因
 デプロイ先のnodeのverが低いためにエラーが発生している可能性があります。
 
-### 対処
-package.jsonで、nodeのverを指定
+### 対処方法
+package.jsonで、nodeのverを指定する。
 
 ex.  
 ```
